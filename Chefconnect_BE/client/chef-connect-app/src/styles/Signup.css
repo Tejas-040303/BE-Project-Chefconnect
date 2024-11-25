@@ -1,0 +1,124 @@
+/* Full-page container with a background image */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background: url("../assets/images/signup-bg.jpg") no-repeat center center fixed;
+  background-size: cover;
+}
+
+.signup-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* Glassmorphism Effect for Form */
+.signup-form {
+  background: rgba(255, 255, 255, 0.2); /* Semi-transparent white */
+  backdrop-filter: blur(15px); /* Blur effect */
+  border-radius: 16px;
+  padding: 2rem;
+  width: 100%;
+  max-width: 400px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: #fff;
+}
+
+/* Form Heading */
+.signup-form h2 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  font-size: 1.8rem;
+  color: #fff;
+}
+
+/* Form Group - Input Fields */
+.form-group {
+  margin-bottom: 1rem;
+}
+
+.form-group label {
+  display: block;
+  color: #fff;
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 0.7rem;
+  border-radius: 6px;
+  border: none;
+  outline: none;
+  font-size: 1rem;
+  background-color: rgba(255, 255, 255, 0.8);
+  color: #333;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Submit Button */
+.btn-signup {
+  display: block;
+  width: 100%;
+  padding: 0.8rem;
+  margin-top: 1rem;
+  font-size: 1rem;
+  color: #fff;
+  background-color: #ff6600; /* Bright orange */
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-signup:hover {
+  background-color: #ff8533; /* Slightly lighter orange */
+}
+
+/* Redirect Text */
+.redirect {
+  text-align: center;
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  color: #fff;
+}
+
+.redirect a {
+  color: #ff6a00; /* Bright yellow */
+  text-decoration: none;
+}
+
+.redirect a:hover {
+  text-decoration: underline;
+}
+
+.error-message {
+  font-size: 0.9rem;
+  color: #f00;
+  margin-top: 5px;
+  font-style: italic;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .signup-form {
+    padding: 1.5rem;
+  }
+
+  .signup-form h2 {
+    font-size: 1.5rem;
+  }
+
+  .form-group input {
+    font-size: 0.9rem;
+  }
+
+  .btn-signup {
+    font-size: 0.9rem;
+  }
+}

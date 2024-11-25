@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { signup } from "./authApi";
 import { useNavigate } from "react-router-dom"; // Import useNavigate
-import "./Signup.css"
+import "../styles/Signup.css";
 
 const Signup = () => {
   const [formData, setFormData] = useState({
@@ -9,9 +9,10 @@ const Signup = () => {
     username: "",
     email: "",
     dob: "",
-    location: "",
     password: "",
   });
+
+  const [errorMessage, setErrorMessage] = useState("");
 
   const navigate = useNavigate(); // Initialize useNavigate
 
@@ -19,11 +20,38 @@ const Signup = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
+  const calculateAge = (dob) => {
+    const today = new Date();
+    const birthDate = new Date(dob);
+    let age = today.getFullYear() - birthDate.getFullYear();
+    const m = today.getMonth() - birthDate.getMonth();
+    if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+      age--;
+    }
+    return age;
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    // Check age
+    const age = calculateAge(formData.dob);
+    if (age < 16) {
+      alert("You must be at least 16 years old to sign up.");
+      return;
+    } else {
+      setErrorMessage(""); // Clear error message if age is valid
+    }
+
+    // Password Validation Regex (same as backend)
+    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,20}$/;
+    if (!passwordRegex.test(formData.password)) {
+      setErrorMessage("Password must be 8-20 characters long, include one uppercase letter, one lowercase letter, one special character, and one number.");
+      return;
+    }
+
     try {
       const response = await signup(formData);
-      alert(response.data.message);
       navigate("/"); // Redirect to home page
     } catch (err) {
       alert(err.response?.data?.error || "Something went wrong");
@@ -76,23 +104,11 @@ const Signup = () => {
             type="date"
             id="dob"
             name="dob"
-            value={formData.dob}
-            onChange={handleChange}
-            required
+            value={formData.dob} 
+            onChange={handleChange}  
+            required 
           />
-        </div>
-        <div className="form-group">
-          <label htmlFor="location">Location</label>
-          <input
-            type="text"
-            id="location"
-            name="location"
-            placeholder="Enter your location"
-            value={formData.location}
-            onChange={handleChange}
-            required
-          />
-        </div>
+        </div> 
         <div className="form-group">
           <label htmlFor="password">Password</label>
           <input
@@ -105,6 +121,10 @@ const Signup = () => {
             required
           />
         </div>
+
+        {/* Display password error message */}
+        {errorMessage && <p className="error-message">{errorMessage}</p>}
+
         <button type="submit" className="btn-signup">
           Sign Up
         </button>

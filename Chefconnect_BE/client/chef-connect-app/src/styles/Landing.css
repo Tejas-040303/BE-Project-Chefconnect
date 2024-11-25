@@ -1,0 +1,27 @@
+/* Keyframes for floating animation */
+@keyframes float {
+    0% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-10px); /* Moves up */
+    }
+    100% {
+        transform: translateY(0px); /* Moves back down */
+    }
+}
+
+/* Apply animation to the image */
+.float-animation {
+    animation: float 3s ease-in-out infinite; /* 3s duration, infinite loop */
+}
+
+/* Optional: background image styling */
+.bg-image {
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    opacity: 0.3;
+}

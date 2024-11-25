@@ -1,0 +1,68 @@
+/* Global styles */
+html, body {
+    height: 100% !important; /* Make sure the body and html take up full height */
+    margin: 0 !important; /* Remove default margin */
+    display: flex !important;
+    flex-direction: column !important;
+  }
+  
+  /* The content of the page should take up all available space except footer */
+  body > .content {
+    flex-grow: 1 !important;
+  }
+  
+  /* Footer specific styling */
+  .footer-container {
+    background-color: #f8f9fa !important;
+    padding: 20px !important;
+    border-top: 1px solid #e0e0e0 !important;
+    position: relative !important;
+    bottom: 0 !important;
+    width: 100% !important;
+    box-shadow: 0px -2px 5px rgba(0, 0, 0, 0.1) !important; /* Subtle shadow */
+  }
+  
+  footer {
+    text-align: center !important;
+  }
+  
+  /* Footer sections styles */
+  footer .nav-link {
+    font-size: 1.125rem !important;
+    color: #000 !important;
+    text-decoration: none !important;
+    transition: color 0.3s ease !important;
+  }
+  
+  footer .nav-link:hover {
+    color: #ff9900 !important; /* Highlight color on hover */
+  }
+  
+  footer .nav-link.active {
+    font-weight: bold !important;
+    color: #ff9900 !important; /* Active link color */
+  }
+  
+  footer .text-muted {
+    color: #6c757d !important;
+  }
+  
+  footer h5 {
+    font-size: 1.25rem !important;
+    font-weight: bold !important;
+    margin-bottom: 15px !important;
+  }
+  
+  /* Responsive styling for the footer */
+  @media (max-width: 768px) {
+    footer {
+      padding: 15px !important;
+    }
+    .footer-container {
+      padding: 15px !important;
+    }
+    .col-3, .col-6 {
+      text-align: center !important;
+    }
+  }
+  
